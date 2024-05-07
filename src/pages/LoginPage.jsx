@@ -1,6 +1,28 @@
 import {Box, Button, Divider, TextField, Typography} from '@mui/material'
+import { useContext, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { AuthContext } from '../context/AuthContext'
 
 function LoginPage () {
+
+    const navigate = useNavigate()
+    const {login} = useContext(AuthContext)
+    const [emailOrPhone,setEmailOrPhone] = useState('')
+    const [password,setPassword] = useState('')
+
+    const handleChangeEmailOrPhone = (e) => setEmailOrPhone(e.target.value)
+    const handleChangePassword = (e) => setPassword(e.target.value)
+    const handleSubmitLogin = async (e) => {
+        e.preventDefault()
+        if(emailOrPhone==='qwer' && password === '1234') {
+            console.log(login)
+            await login()
+            navigate('/')
+        } else {
+            alert('Invalid username or password')
+        }
+    }
+
     return <Box 
     component='main'
     display='flex'
@@ -32,11 +54,27 @@ function LoginPage () {
             flexDirection='column'
             gap='12px'
             padding='16px'
-            backgorundColor='white'
-            borderRadius={1}>
-                <TextField variant='outlined' size='small' label='Email or Phone number'/>
-                <TextField variant='outlined' size='small' label='Password'/>
-                <Button type='submit' variant='contained' color='primary'>Login</Button>
+            backgroundColor='white'
+            borderRadius={1}
+            onSubmit={handleSubmitLogin}
+            >
+                <TextField 
+                variant='outlined' 
+                size='small' 
+                label='Email or Phone number'
+                value={emailOrPhone}
+                onChange={handleChangeEmailOrPhone}
+                />
+                <TextField 
+                variant='outlined' 
+                size='small' 
+                type='password'
+                label='Password'
+                value={password}
+                onChange={handleChangePassword}
+                />
+                <Button type='submit' variant='contained' color='primary'
+                >Login</Button>
                 <Button type='button' size='small' variant='text' color='primary'>Forgot Password</Button>
                 <Divider />
                 <Button type='button' variant='contained' color='success'>Create New Account</Button>

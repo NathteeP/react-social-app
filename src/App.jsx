@@ -11,9 +11,8 @@ function App() {
   <ThemeContextProvider>
     <AuthContextProvider>
       <PostContextProvider>
-      <CssBaseline>
+      <CssBaseline />
         <Router />
-        </CssBaseline>
       </PostContextProvider>
     </AuthContextProvider>
   </ThemeContextProvider>

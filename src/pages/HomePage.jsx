@@ -1,33 +1,26 @@
-import { Button } from "@mui/material"
-import { Link, useNavigate } from "react-router-dom"
+import {  Box, Grid } from "@mui/material"
+import { useNavigate } from "react-router-dom"
+import AppBar from "../components/AppBar"
+import SideBar from "../components/SideBar"
+import Feed from "../components/Feed"
+import RightBar from "../components/RightBar"
 
 function HomePage () {
 
     const navigate = useNavigate()
 
-    const handleClick = () => {
-        //can be coded -- unlike `Link` which is instant redirect
-        navigate('/randommmm')
-    }
-    return <div>
-       <h1>Home Page </h1>
-       <Link to="/login">Login</Link>
-       <Link to="/profile">Profile</Link>
+    return (
+        <Box flexGrow={1}>
 
-       <Button 
-       variant='contained' 
-       onClick={handleClick}
-       color='success'
-       size='medium'
-       endIcon=''
-       sx={{
-        padding: '16px',
-        color: 'black',
-        '&:hover': {
-            color:'white'
-        },
-       }}>go to 404</Button>
-    </div>
+            <Grid container sx={{textAlign:'center',height:'calc(100vh - 64px)'}}>
+            <Grid item md={3}
+            sx={{backgroundColor:"wheat",display:{xs:'none',md:'block'}}}><SideBar /></Grid>
+            <Grid item xs={12} md={6}><Feed /></Grid>
+            <Grid item md={3}
+            sx={{backgroundColor:"wheat",display:{xs:'none',md:'block'}}}><RightBar /></Grid>
+            </Grid>
+        </Box>
+    )
 }
 
 export default HomePage

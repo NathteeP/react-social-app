@@ -7,15 +7,12 @@ export default function AuthContextProvider ({children}) {
 
     const [user, setUser] = useState(null)
 
-    useEffect (()=> {
-        login()
-    },[])
-
     const login = async () => {
         try {
         const response = await userAPI.getUserById('1')
         setUser(response.data)
         }catch (error) {
+            setUser(null)
             console.log(error)
         }
     }
