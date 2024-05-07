@@ -2,6 +2,8 @@ import AuthContextProvider from "./context/AuthContext";
 import PostContextProvider from "./context/PostContext";
 import ThemeContextProvider from "./context/ThemeContext";
 import Router from "./routes/Router";
+import { CssBaseline } from "@mui/material";
+
 
 function App() {
 
@@ -9,7 +11,9 @@ function App() {
   <ThemeContextProvider>
     <AuthContextProvider>
       <PostContextProvider>
+      <CssBaseline>
         <Router />
+        </CssBaseline>
       </PostContextProvider>
     </AuthContextProvider>
   </ThemeContextProvider>
