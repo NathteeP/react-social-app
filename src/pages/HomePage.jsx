@@ -15,8 +15,18 @@ function HomePage () {
        <Link to="/profile">Profile</Link>
 
        <Button 
-       variant='outlined' 
-       onClick={handleClick}>go to 404</Button>
+       variant='contained' 
+       onClick={handleClick}
+       color='success'
+       size='medium'
+       endIcon=''
+       sx={{
+        padding: '16px',
+        color: 'black',
+        '&:hover': {
+            color:'white'
+        },
+       }}>go to 404</Button>
     </div>
 }
 
