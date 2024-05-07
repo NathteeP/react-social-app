@@ -1,11 +1,18 @@
+import AuthContextProvider from "./context/AuthContext";
+import PostContextProvider from "./context/PostContext";
+import ThemeContextProvider from "./context/ThemeContext";
 import Router from "./routes/Router";
 
 function App() {
 
   return (
-    <>
-     <Router />
-    </>
+  <ThemeContextProvider>
+    <AuthContextProvider>
+      <PostContextProvider>
+        <Router />
+      </PostContextProvider>
+    </AuthContextProvider>
+  </ThemeContextProvider>
   )
 }
 

@@ -1,6 +1,6 @@
 import axios from './axios.config'
 
-export const getAllPost = async () => {
+export const getAllPosts = async () => {
     return await axios.get('/posts')
 }
 
